@@ -35,7 +35,7 @@ class MyAppState extends ChangeNotifier {
   TextEditingController inputField1 = TextEditingController();
   TextEditingController inputField2 = TextEditingController();
 
-  var text1 = 0.0;
+  var textBox1 = 0;
 
   
   void sum(){
@@ -53,10 +53,6 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void division(){
-
-    notifyListeners();
-  }
 
 }
 
@@ -143,12 +139,12 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 200,child: TextField(controller: appState.inputField1,)),
+              SizedBox(width: 200,child: TextField(controller: appState.inputField1, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField1")),)),
               SizedBox(width: 200,),
-              SizedBox(width: 200,child: TextField(controller: appState.inputField2,)),
+              SizedBox(width: 200,child: TextField(controller: appState.inputField2, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField2")),)),
             ],
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 40),
 
           Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -159,13 +155,10 @@ class HomePage extends StatelessWidget {
               ElevatedButton(onPressed: appState.sub, child: Text("sub")),
               SizedBox(width: 20,),
               ElevatedButton(onPressed: appState.multiply, child: Text("multiply")),
-              SizedBox(width: 20,),
-              ElevatedButton(onPressed: appState.division, child: Text("division")),
             ],
           ),
-          SizedBox(height: 10),
-          Text(appState.text1.toString()),
-          Row(
+          SizedBox(height: 40),
+Container(child: InputDecorator(decoration: InputDecoration(labelText: 'TextBox1',border: OutlineInputBorder(),),child: Text(appState.textBox1.toString()),), width: 200,),          Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(width: 10), 
