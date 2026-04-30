@@ -31,22 +31,25 @@ class MyApp extends StatelessWidget {
 */
 
 class MyAppState extends ChangeNotifier {
-int? _character = 0;
+int? radioButton = 0;
+
+  void MysetState(int? value){
+    radioButton = value;
+    notifyListeners();
+  }
+
 
   TextEditingController inputField1 = TextEditingController();
   TextEditingController inputField2 = TextEditingController();
 
-  var text1 = "";
+  var textBox1 = "";
 
-  void MysetState(int? value){
-    _character = value;
-    notifyListeners();
-  }
+
 
   
-  void greeting(){
-    text1 = inputField1.text;
-    print(_character);
+  void count(){
+
+
     notifyListeners();
   }
 
@@ -135,7 +138,7 @@ class HomePage extends StatelessWidget {
           RadioListTile<int>(
           title: const Text('sum  +'),
           value: 0,
-          groupValue: appState._character,
+          groupValue: appState.radioButton,
           onChanged: (int? value) {
              {
               appState.MysetState(value);
@@ -146,7 +149,7 @@ class HomePage extends StatelessWidget {
         RadioListTile<int>(
           title: const Text('sub  -'),
           value: 1,
-          groupValue: appState._character,
+          groupValue: appState.radioButton,
           onChanged: (int? value) {
              {
               appState.MysetState(value);
@@ -156,25 +159,26 @@ class HomePage extends StatelessWidget {
         RadioListTile<int>(
           title: const Text('multiply   *'),
           value: 2,
-          groupValue: appState._character,
+          groupValue: appState.radioButton,
           onChanged: (int? value) {
              {
               appState.MysetState(value);
             };
           },
         ),
+          SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 200,child: TextField(controller: appState.inputField1,)),
+              SizedBox(width: 200,child: TextField(controller: appState.inputField1, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField1")),)),
               SizedBox(width: 200,),
-              SizedBox(width: 200,child: TextField(controller: appState.inputField1,)),
+              SizedBox(width: 200,child: TextField(controller: appState.inputField2, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField2")),)),
             ],
           ),
-          ElevatedButton(onPressed: appState.greeting, child: Text("count")),
-          SizedBox(height: 10),
-          Text(appState.text1),
-          Row(
+          ElevatedButton(onPressed: appState.count, child: Text("count")),
+          SizedBox(height: 40),
+Container(child: InputDecorator(decoration: InputDecoration(labelText: 'TextBox1',border: OutlineInputBorder(),),child: Text(appState.textBox1.toString()),), width: 200,), 
+         Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(width: 10), 
@@ -187,7 +191,6 @@ class HomePage extends StatelessWidget {
 }
 
 
-enum Pet { dog, cat }
 // page two
 
 class ListPage extends StatelessWidget {
@@ -200,7 +203,7 @@ class ListPage extends StatelessWidget {
       children: <Widget>[ RadioListTile<int>(
           title: const Text('sum  +'),
           value: 0,
-          groupValue: appState._character,
+          groupValue: appState.radioButton,
           onChanged: (int? value) {
              {
               appState.MysetState(value);
@@ -211,7 +214,7 @@ class ListPage extends StatelessWidget {
         RadioListTile<int>(
           title: const Text('sub  -'),
           value: 1,
-          groupValue: appState._character,
+          groupValue: appState.radioButton,
           onChanged: (int? value) {
              {
               appState.MysetState(value);
@@ -221,7 +224,7 @@ class ListPage extends StatelessWidget {
         RadioListTile<int>(
           title: const Text('multiply   *'),
           value: 2,
-          groupValue: appState._character,
+          groupValue: appState.radioButton,
           onChanged: (int? value) {
              {
               appState.MysetState(value);
