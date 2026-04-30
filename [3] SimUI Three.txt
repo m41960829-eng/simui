@@ -35,11 +35,12 @@ class MyAppState extends ChangeNotifier {
   TextEditingController inputField1 = TextEditingController();
   TextEditingController inputField2 = TextEditingController();
 
-  var text1 = "";
+  var textBox1 = 0;
 
   
-  void greeting(){
-    text1 = inputField1.text;
+  void calculate(){
+
+
     notifyListeners();
   }
 
@@ -128,14 +129,14 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 200,child: TextField(controller: appState.inputField1,)),
+              SizedBox(width: 200,child: TextField(controller: appState.inputField1, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField1")),)),
               SizedBox(width: 200,),
-              SizedBox(width: 200,child: TextField(controller: appState.inputField1,)),
+              SizedBox(width: 200,child: TextField(controller: appState.inputField2, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField2")),)),
             ],
           ),
-          ElevatedButton(onPressed: appState.greeting, child: Text("data")),
-          SizedBox(height: 10),
-          Text(appState.text1),
+          ElevatedButton(onPressed: appState.calculate, child: Text("calculate")),
+          SizedBox(height: 40),
+          Container(child: InputDecorator(decoration: InputDecoration(labelText: 'TextBox1',border: OutlineInputBorder(),),child: Text(appState.textBox1.toString()),), width: 200,),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
