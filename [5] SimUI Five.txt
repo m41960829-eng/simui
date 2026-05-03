@@ -31,23 +31,29 @@ class MyApp extends StatelessWidget {
 */
 
 class MyAppState extends ChangeNotifier {
-int? radioButton = 0;
 
+  // this function for applying radioButton values. don't change anything in this function
   void MysetState(int? value){
     radioButton = value;
     notifyListeners();
   }
 
-
-  TextEditingController inputField1 = TextEditingController();
-  TextEditingController inputField2 = TextEditingController();
-
-  var textBox1 = "";
+int? radioButton = 0; /* linked with Radio Buttons .. buttons sum, sub and multiply have values 0, 1 and 2. 
+Meaning if the user chooses sum, radioButton = 0 | if the user chooses sub, radioButton = 1 | if the user chooses multiply, radioButton = 2*/
 
 
+
+
+  TextEditingController inputField1 = TextEditingController(); // linked with inputField1 .. use inputfield1.text for input value
+  TextEditingController inputField2 = TextEditingController(); // linked with inputField2 .. use inputfield2.text for input value
 
   
-  void count(){
+  var textBox1 = ""; // linked with TextBox1
+
+
+
+  // linked with calculate button
+  void calculate(){
 
 
     notifyListeners();
@@ -175,9 +181,9 @@ class HomePage extends StatelessWidget {
               SizedBox(width: 200,child: TextField(controller: appState.inputField2, decoration: InputDecoration(border: OutlineInputBorder(), label: Text("inputField2")),)),
             ],
           ),
-          ElevatedButton(onPressed: appState.count, child: Text("count")),
+          ElevatedButton(onPressed: appState.calculate, child: Text("calculate")),
           SizedBox(height: 40),
-Container(child: InputDecorator(decoration: InputDecoration(labelText: 'TextBox1',border: OutlineInputBorder(),),child: Text(appState.textBox1.toString()),), width: 200,), 
+          Container(child: InputDecorator(decoration: InputDecoration(labelText: 'TextBox1',border: OutlineInputBorder(),),child: Text(appState.textBox1.toString()),), width: 200,), 
          Row(
             mainAxisSize: MainAxisSize.min,
             children: [
