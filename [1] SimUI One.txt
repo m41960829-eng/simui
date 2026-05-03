@@ -32,10 +32,12 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
 
-  var text1 = "";
+  var textBox1 = ""; // linked with TextBox1
 
   
-  void greeting(){
+ 
+  void display(){  // linked with display button
+    
     
     notifyListeners();
   }
@@ -123,9 +125,9 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          ElevatedButton(onPressed: appState.greeting, child: Text("data")),
+          ElevatedButton(onPressed: appState.display, child: Text("display")),
           SizedBox(height: 10),
-          Text(appState.text1),
+          Container(child: InputDecorator(decoration: InputDecoration(labelText: 'TextBox1',border: OutlineInputBorder(),),child: Text(appState.textBox1.toString()),), width: 200,), 
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
