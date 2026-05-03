@@ -35,11 +35,12 @@ class MyAppState extends ChangeNotifier {
   TextEditingController inputField1 = TextEditingController(); // for Text, use inputField1.text
   TextEditingController inputField2 = TextEditingController(); // for Text, use inputField2.text
 
-  var textBox1 = 0; // linked with TextBox1
+  var textBox1; // linked with TextBox1
 
+
+  // linked with calculate button
+  void calculate(){  
   
-  void calculate(){  // linked with calculate button
-
 
     notifyListeners();
   }
